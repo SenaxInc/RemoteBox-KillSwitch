@@ -3,7 +3,7 @@
 ## Overview:
   * Arduino attached to a liquid level height switch.
   * Arduino attached to an engine ignition.
-  * When triggered switch is triggered a radio signal is sent to turn of the engine.
+  * When liquid switch is triggered, a radio signal is sent to turn of the engine.
 
 ## Main Parts:
   * Arduino Uno with Radio Shield
