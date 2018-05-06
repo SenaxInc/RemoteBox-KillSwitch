@@ -42,4 +42,23 @@ if (s1 == LOW) {         //And If the current state of the switch is "low", AKA 
   freshb = true;         //After broadcasting a new message, change "fresh broadcast" state to true
 }
   
-  
+}
+
+
+//send message if nothing has been sent recently
+///////need to convert this section to a sleep mode + sleep counter
+if (freshb = false) {
+  freshc ++; //add one to fresh count
+  if(freshc >= fresho) {
+    if (freshf = 1) {
+      Serial.print('Z');
+      freshf = 0;
+    }
+    else {
+      Serial.print('z');
+      freshf = 1;
+    }
+  }
+}
+
+} //end main loop  
