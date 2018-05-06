@@ -1,6 +1,6 @@
 ## ToDo
 
-  * send confirmation signal
+  * send confirmation signal back to level monitor box, use to trigger sleep
   * sleep mode
       * see: https://github.com/dorkmo/ArduinoSMSTankAlarm/blob/master/TankAlarm072017.ino
   * syncronize sleep/wake times
