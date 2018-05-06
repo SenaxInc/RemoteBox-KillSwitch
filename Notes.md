@@ -1,7 +1,7 @@
 ## Questions
 
   * can an arduino digital pin put out enough amps to power the relay module?
-  ** could power down relay module when not in use
+      * could power down relay module when not in use
 
 
 ## Related Links
