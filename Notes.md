@@ -2,6 +2,7 @@
 
   * send confirmation signal
   * sleep mode
+      * see: https://github.com/dorkmo/ArduinoSMSTankAlarm/blob/master/TankAlarm072017.ino
   * syncronize sleep/wake times
 
 ## Questions
