@@ -1,3 +1,9 @@
+## ToDo
+
+  * send confirmation signal
+  * sleep mode
+  * syncronize sleep/wake times
+
 ## Questions
 
   * can an arduino digital pin put out enough amps to power the relay module?
