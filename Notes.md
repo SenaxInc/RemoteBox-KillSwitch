@@ -4,6 +4,7 @@
   * sleep mode
       * see: https://github.com/dorkmo/ArduinoSMSTankAlarm/blob/master/TankAlarm072017.ino
   * syncronize sleep/wake times
+      * wake up every 30 minutes, broadcast till other box wakes up, do the business, then sleep for 30 minutes 
 
 ## Questions
 
