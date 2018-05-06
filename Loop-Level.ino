@@ -24,3 +24,21 @@ pinMode(p1,INPUT_PULLUP); //define liquid level pin mode
 }
 
 //// LOOP ////
+
+void loop() {
+  
+freshb = false;
+  
+s1 = digitalRead(p1);
+if (s1 != b1) {          //If the current state of the switch is not the same as the last broad cast...
+if (s1 == LOW) {         //And If the current state of the switch is "low", AKA the switch is tripped...
+    Serial.print('K');   //Send the Kill Signal
+    b1 = LOW;            //After broadcasting kill signal, define "the last broadcast" as "low"
+  } else {               //If the switch was not "low"...
+    Serial.print('A');   //Send Alive Signal
+    b1 = HIGH;           //After broadcasting alive signal, define "the last broadcast" as "high"
+  }
+  freshb = true;         //After broadcasting a new message, change "fresh broadcast" state to true
+}
+  
+  
