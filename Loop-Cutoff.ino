@@ -23,8 +23,13 @@ int bedtime = 0; //1= its time for bed. 0= its time to stay awake.
 
 void setup() {
 
+  
+  
 pinMode(r1, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
 
+ digitalWrite(r1, HIGH);  //ground ignition at startup for safety. verify connection before allowin engine to run.
+  //if battery dies overnighht well will be down in the morning.
+  
   wdt_disable(); //turn off timer to prevent errors on setup
   sei();  //enable interrupts
   ADCSRA |= (1<<ADEN); //ADC hex code set to on
@@ -83,7 +88,10 @@ sei(); //enable interrupts
 //////////// BED TIME STARTS /////////
   
   }
-    
+
+  delay(5000);
+
+ //////////add timeout here. if no communication after 30 minutes, kill engine. 
   
 } //end awake while
 
