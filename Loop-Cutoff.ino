@@ -27,14 +27,6 @@ wdt_disable(); //turn off timer to prevent errors on setup
 
 pinMode(r1, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
   
-  //SET AND START WATCHDOG TIMER
-wdt_reset();   //reset watchdog
-WDTCSR |= 0b00011000; 
-WDTCSR = 0b00100001;
-WDTCSR = WDTCSR | 0b01000000;  //put watchdog in interupt mode (interupt will happen every 8 seconds)
-wdt_reset(); //reset watchdog - START COUNTING FROM ZERO
-sei(); //enable interrupts
-  
 }
 
 ///// LOOP /////
@@ -77,7 +69,15 @@ if (RXbyte == 'z') {
 } //end awake while
 
 while (bedtime=1){
-
+  
+//SET AND START WATCHDOG TIMER
+wdt_reset();   //reset watchdog
+WDTCSR |= 0b00011000; 
+WDTCSR = 0b00100001;
+WDTCSR = WDTCSR | 0b01000000;  //put watchdog in interupt mode (interupt will happen every 8 seconds)
+wdt_reset(); //reset watchdog - START COUNTING FROM ZERO
+sei(); //enable interrupts
+  
 sleep for 30 minutes
 
   Serial.begin(9600);
