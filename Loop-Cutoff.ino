@@ -91,19 +91,21 @@ while (bedtime=1){
   
 tickSleep();  //puts arduino to sleep for about 8 seconds
   
-if (tick8=1800){
- bedtime=0 
+if (tick8>1800){
   Serial.begin(9600);
+
+  while (bedtime=0){
+  Serial.print('W');
+    wdt_reset();
+  
+if (RXbyte == 'w') {
+    bedtime=0;
 }
+    
+} //end nested while  
   
+} //end bedtime while
   
-broadcast "W"
-  
-  wait for "w"
-  
-set betime=0 after  
-  
-} //end sleep bedtime
 } //end main loop
 
 void tickSleep()   
