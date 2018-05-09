@@ -44,25 +44,49 @@ void loop() {
 //while (Serial.available()>0){
   while (bedtime=0){
 
+    //START COMMUNICATING WITH XBEE
+Serial.begin(9600);
+    
+    
 char RXbyte = char(Serial.read());
   
   
   if (RXbyte == 'K') {
     digitalWrite(r1, HIGH);
+    Serial.print('k');
     wdt_reset();
   }
 if (RXbyte == 'A') {
     digitalWrite(r1, LOW);
+    Serial.print('a');
     wdt_reset();
   }
-  
-  if (RXbyte == 'Z') {
+
+if (RXbyte == 'Z') {
+    Serial.print('z');
     wdt_reset();
   }
+
 if (RXbyte == 'z') {
+    Serial.end(9600);
+    bedtime=1;
     wdt_reset();
   }
+    
   
+} //end awake while
+
+while (bedtime=1){
+
+sleep for 30 minutes
+
+  Serial.begin(9600);
   
-} //end while
+broadcast "W"
+  
+  wait for "w"
+  
+set betime=0 after  
+  
+} //end sleep bedtime
 } //end main loop
