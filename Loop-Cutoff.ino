@@ -90,3 +90,8 @@ set betime=0 after
   
 } //end sleep bedtime
 } //end main loop
+
+ISR(WDT_vect)
+{
+    tick8 ++; //for each Watchdog Interupt, adds 1 to the number of 8 second ticks counted so far
+}
