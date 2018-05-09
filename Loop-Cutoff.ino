@@ -17,7 +17,7 @@ int s2 = digitalRead(2);  //to handle data of current State of the relay
 
 int b2;  //to temporarily remember the last Broadcast data of the realy
 
-int bedtime = 0;
+int bedtime = 0; //1= its time for bed. 0= its time to stay awake.
 
 ////// SETUP //////
 
