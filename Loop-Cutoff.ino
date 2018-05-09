@@ -23,9 +23,12 @@ int bedtime = 0; //1= its time for bed. 0= its time to stay awake.
 
 void setup() {
 
-wdt_disable(); //turn off timer to prevent errors on setup
-
 pinMode(r1, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
+
+  wdt_disable(); //turn off timer to prevent errors on setup
+  sei();  //enable interrupts
+  ADCSRA |= (1<<ADEN); //ADC hex code set to on
+  power_adc_enable(); //enable ADC module    
   
 }
 
@@ -78,6 +81,7 @@ WDTCSR = WDTCSR | 0b01000000;  //put watchdog in interupt mode (interupt will ha
 wdt_reset(); //reset watchdog - START COUNTING FROM ZERO
 sei(); //enable interrupts
   
+  tick8=1800
 sleep for 30 minutes
 
   Serial.begin(9600);
