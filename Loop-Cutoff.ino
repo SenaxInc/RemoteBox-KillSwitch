@@ -29,6 +29,10 @@ pinMode(r1, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
   sei();  //enable interrupts
   ADCSRA |= (1<<ADEN); //ADC hex code set to on
   power_adc_enable(); //enable ADC module    
+
+  
+    //START COMMUNICATING WITH XBEE
+Serial.begin(9600);
   
 }
 
@@ -36,12 +40,10 @@ pinMode(r1, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
 
 void loop() {
 
-//while (Serial.available()>0){
   while (bedtime=0){
 
-    //START COMMUNICATING WITH XBEE
-Serial.begin(9600);
     
+while (Serial.available()>0){    
     
 char RXbyte = char(Serial.read());
   
@@ -65,7 +67,21 @@ if (RXbyte == 'Z') {
 if (RXbyte == 'z') {
     Serial.end(9600);
     bedtime=1;
-    wdt_reset();
+
+  /////// SLEEP MODE SETUP ///////////
+  //SET AND START WATCHDOG TIMER
+wdt_reset();   //reset watchdog
+WDTCSR |= 0b00011000; 
+WDTCSR = 0b00100001;
+WDTCSR = WDTCSR | 0b01000000;  //put watchdog in interupt mode (interupt will happen every 8 seconds)
+wdt_reset(); //reset watchdog - START COUNTING FROM ZERO
+sei(); //enable interrupts
+  //prepare for sleep - turn off some settings
+    power_adc_disable(); //disable the clock to the ADC module
+    ADCSRA &= ~(1<<ADEN);  //ADC hex code set to off
+                         //can USART be turned off here? power_usart_disable()
+//////////// BED TIME STARTS /////////
+  
   }
     
   
@@ -73,18 +89,13 @@ if (RXbyte == 'z') {
 
 while (bedtime=1){
   
-//SET AND START WATCHDOG TIMER
-wdt_reset();   //reset watchdog
-WDTCSR |= 0b00011000; 
-WDTCSR = 0b00100001;
-WDTCSR = WDTCSR | 0b01000000;  //put watchdog in interupt mode (interupt will happen every 8 seconds)
-wdt_reset(); //reset watchdog - START COUNTING FROM ZERO
-sei(); //enable interrupts
+tickSleep();  //puts arduino to sleep for about 8 seconds
   
-  tick8=1800
-sleep for 30 minutes
-
+if (tick8=1800){
+ bedtime=0 
   Serial.begin(9600);
+}
+  
   
 broadcast "W"
   
@@ -94,6 +105,16 @@ set betime=0 after
   
 } //end sleep bedtime
 } //end main loop
+
+void tickSleep()   
+{
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN); 
+    sleep_enable();
+    sei();  //enable interrupts
+    sleep_mode();
+//after about 8 seconds the Watchdog Interupt will progress the code to the disable sleep command
+    sleep_disable();             
+}
 
 ISR(WDT_vect)
 {
