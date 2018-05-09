@@ -17,6 +17,7 @@ int s2 = digitalRead(2);  //to handle data of current State of the relay
 
 int b2;  //to temporarily remember the last Broadcast data of the realy
 
+int bedtime = 0;
 
 ////// SETUP //////
 
@@ -40,7 +41,8 @@ sei(); //enable interrupts
 
 void loop() {
 
-while (Serial.available()>0){
+//while (Serial.available()>0){
+  while (bedtime=0){
 
 char RXbyte = char(Serial.read());
   
