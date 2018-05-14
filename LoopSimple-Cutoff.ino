@@ -4,13 +4,13 @@
 
 ////// VARIABLES //////
 
-int p2 = 2; //define "read" Pin to confirm relay has been flipped
+int p11 = 11; //define "read" Pin to confirm relay has been flipped
 
-int r1 = 1; //define "write" pins to control Relay module
+int r10 = 10; //define "write" pins to control Relay module
 
-int s2 = digitalRead(2);  //to handle data of current State of the relay
+int s11 = digitalRead(11);  //to handle data of current State of the relay
 
-int b2;  //to temporarily remember the last Broadcast data of the realy
+int b11;  //to temporarily remember the last Broadcast data of the realy
 
 int bedtime = 0; //1= its time for bed. 0= its time to stay awake.
 
