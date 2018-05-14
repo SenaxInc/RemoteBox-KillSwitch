@@ -4,11 +4,11 @@
 
 ////// VARIABLES //////
 
-int p1 = 1; //liquid level switch set to pin 1
+int p10 = 10; //liquid level switch set to Pin 10
 
-int b1;  //to temporarily remember the last broadcast data for the switch
+int b10;  //to temporarily remember the last Broadcast data for the switch
 
-int s1 = digitalRead(1);  //to handle data of current state of a switch
+int s10 = digitalRead(10);  //to handle data of current State of a switch
 
 boolean freshb = false; //keep track of weather a new broadcast has been send each loop
 int freshc = 0; //keep track of last fresh broadcast
