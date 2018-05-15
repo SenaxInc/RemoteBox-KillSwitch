@@ -45,6 +45,25 @@ delay(5000);           //wait 5 seconds
   } else {               //If the switch was not "low"...
     Serial.print('A');   //Send Alive Signal
   }
+  
+while (Serial.available()>0){             //if message available...
+    
+char RXbyte = char(Serial.read()); //read message...
+  
+if (RXbyte == 'k') { //if message is "k"...
+    Serial.print('Z'); 
+}
+if (RXbyte == 'a') { //if message is "a"...
+    Serial.print('Z'); 
+}  
+ 
+if (RXbyte == 'z') {
+    Serial.end(9600);                    //end communication with xbee
+    bedtime=1;                           //initiate bedtime next loop
+    timeout=1;
+}
+  
+} //end serial available while
 
 }
   
