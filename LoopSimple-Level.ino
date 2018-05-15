@@ -60,8 +60,9 @@ if (RXbyte == 'a') { //if message is "a"...
 if (RXbyte == 'z') {
     Serial.end(9600);                    //end communication with xbee
     bedtime=1;                           //initiate bedtime next loop
-    timeout=1;
 }
+
+delay(5000);
   
 } //end serial available while
 
