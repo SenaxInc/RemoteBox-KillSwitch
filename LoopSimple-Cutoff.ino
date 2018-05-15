@@ -37,7 +37,7 @@ while (bedtime=0){
 
 Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
 
-delay(2000);                              //wait 2 seconds  
+delay(5000);                              //wait 5 seconds  
   
 while (Serial.available()>0){             //if message available...
     
@@ -46,41 +46,33 @@ char RXbyte = char(Serial.read());        //read message...
   if (RXbyte == 'K') {                    //if message is "K"...
     digitalWrite(r10, LOW);               //close iginition circuit
     Serial.print('k');                    //send "k" message to confirm relay has been flipped
+    timeout=1;
   }
 if (RXbyte == 'A') {                      //if message is "A"...
     digitalWrite(r1, HIGH);               //open iginition circuit
     Serial.print('a');                    //send "a" message to confirm relay has been flipped
+    timeout=1;
   }
 
 if (RXbyte == 'Z') {                      //when level box recieves confirmation is sends "Z" 
     Serial.print('z');                    //send "z" to confirm
-  
+    timeout=1;
   }
 
 if (RXbyte == 'z') {
-    Serial.end(9600);
-    bedtime=1;
-
-  /////// SLEEP MODE SETUP ///////////
-  //SET AND START WATCHDOG TIMER
-wdt_reset();   //reset watchdog
-WDTCSR |= 0b00011000; 
-WDTCSR = 0b00100001;
-WDTCSR = WDTCSR | 0b01000000;  //put watchdog in interupt mode (interupt will happen every 8 seconds)
-wdt_reset(); //reset watchdog - START COUNTING FROM ZERO
-sei(); //enable interrupts
-  //prepare for sleep - turn off some settings
-    power_adc_disable(); //disable the clock to the ADC module
-    ADCSRA &= ~(1<<ADEN);  //ADC hex code set to off
-                         //can USART be turned off here? power_usart_disable()
-//////////// BED TIME STARTS /////////
-  
+    Serial.end(9600);                    //end communication with xbee
+    bedtime=1;                           //initiate bedtime next loop
+    timeout=1;
   }
 
   delay(5000);
-
- //////////add timeout here. if no communication after 30 minutes, kill engine. 
+  timeout++;
   
+  if (timeout>720000) {                   //if timout count is greater than 1 hour....
+    digitalWrite(r10, LOW);               //close iginition circuit, kill engine
+    Serial.print('k');                    //send "k" message to confirm relay has been flipped
+  }
+
 } //end awake while
 
 while (bedtime=1){
