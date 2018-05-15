@@ -42,8 +42,10 @@ delay(5000);           //wait 5 seconds
   
   if (s10 == LOW) {       //And If the current state of the switch is "low", AKA the switch is tripped...      
     Serial.print('K');   //Send the Kill Signal
+    delay(5000);     
   } else {               //If the switch was not "low"...
     Serial.print('A');   //Send Alive Signal
+    delay(5000);     
   }
   
 while (Serial.available()>0){             //if message available...
@@ -71,7 +73,18 @@ delay(5000);
 }
 
 } //end bedtime=0
+
+while (bedtime=1){
+
+ delay(8000);                             //wait 8 seconds
+ tick8++;                                 //add 1 to "tick8"
   
+if (tick8>180){                          //after 24 minutes...
+    bedtime=0;                           //end bedtime
+}                                        //end tick8 if  
+  
+} //end bedtime=1 while
+
 } //end main loop  
 
 void debounceReadPin() {
