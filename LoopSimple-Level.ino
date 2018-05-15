@@ -8,22 +8,23 @@ int p10 = 10; //liquid level switch set to Pin 10
 
 int b10;  //to temporarily remember the last Broadcast data for the switch
 
-int s10 = digitalRead(10);  //to handle data of current State of a switch
+int s10 = digitalRead(p10);  //to handle data of current State of a switch
 
 int ST = 5; //minutes of radio inactivity before XBEE goes into sleep mode
 
 int SP = 25; //minutes XBEE will sleep before waking the radio back up
 
-boolean freshb = false; //keep track of weather a new broadcast has been send each loop
-int freshc = 0; //keep track of last fresh broadcast
-int freshf = 1; // flip bit to send different message each time
-int fresho = 30; // number of loops to run before sending signal. might change code later to be based on watchdog timer
+int messageState = HIGH;         // the current state of the output pin
+int lvlState;             // the current reading from the input pin
+int lastlvlState = LOW;   // the previous reading from the input pin
+unsigned long lastDebounceTime = 0;  // the last time the output pin was toggled
+unsigned long debounceDelay = 50;    // the debounce time; increase if the output flickers
 
 ////// SETUP //////
 
 void setup() {
 
-pinMode(p1,INPUT_PULLUP); //define liquid level pin mode
+pinMode(p10,INPUT_PULLUP); //define liquid level pin mode
   
 }
 
@@ -31,9 +32,7 @@ pinMode(p1,INPUT_PULLUP); //define liquid level pin mode
 
 void loop() {
   
-freshb = false;
-  
-s1 = digitalRead(p1);
+s10 = digitalRead(p10);
 if (s1 != b1) {          //If the current state of the switch is not the same as the last broad cast...
 Serial.begin(9600);      //START COMMUNICATING WITH XBEE
   delay(2000);           //wait 2 seconds
@@ -67,3 +66,39 @@ if (freshb = false) {
 }
 
 } //end main loop  
+
+void debounce() {
+  // read the state of the switch into a local variable:
+  int reading = digitalRead(p10);
+
+  // check to see if you just pressed the button
+  // (i.e. the input went from LOW to HIGH), and you've waited long enough
+  // since the last press to ignore any noise:
+
+  // If the switch changed, due to noise or pressing:
+  if (reading != lastlvlState) {
+    // reset the debouncing timer
+    lastDebounceTime = millis();
+  }
+
+  if ((millis() - lastDebounceTime) > debounceDelay) {
+    // whatever the reading is at, it's been there for longer than the debounce
+    // delay, so take it as the actual current state:
+
+    // if the button state has changed:
+    if (reading != lvlState) {
+      lvlState = reading;
+
+      // only toggle the LED if the new button state is HIGH
+      if (lvlState == HIGH) {
+        messageState = !messageState;
+      }
+    }
+  }
+
+  // set the switch state:
+  s10 = messageState;
+
+  // save the reading. Next time through the loop, it'll be the lastButtonState:
+  lastlvlState = reading;
+}
