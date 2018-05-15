@@ -76,45 +76,15 @@ if (RXbyte == 'z') {
 } //end awake while
 
 while (bedtime=1){
+
+ delay(8000);                             //wait 8 seconds
+ tick8++;                                 //add 1 to "tick8"
   
-tickSleep();  //puts arduino to sleep for about 8 seconds
+if (tick8>180){                          //after 24 minutes...
+    bedtime=0;                           //end bedtime
+}                                        //end tick8 if  
   
-if (tick8>1800){
-  Serial.begin(9600);
-
-  while (bedtime=1){
-          
-  Serial.print('W');
-    wdt_reset();
-    delay(5000);
-
-    while (Serial.available()>0){        
-char RXbyte = char(Serial.read());
-    
-    if (RXbyte == 'w') {
-    bedtime=0;
-} //end if "w"
-      
-} //end serial while
-    
-} //end nested bedtime while  
-
-} //end if tick8  
-} //end bedtime while
+} //end bedtime=1 while
   
 } //end main loop
 
-void tickSleep()   
-{
-    set_sleep_mode(SLEEP_MODE_PWR_DOWN); 
-    sleep_enable();
-    sei();  //enable interrupts
-    sleep_mode();
-//after about 8 seconds the Watchdog Interupt will progress the code to the disable sleep command
-    sleep_disable();             
-}
-
-ISR(WDT_vect)
-{
-    tick8 ++; //for each Watchdog Interupt, adds 1 to the number of 8 second ticks counted so far
-}
