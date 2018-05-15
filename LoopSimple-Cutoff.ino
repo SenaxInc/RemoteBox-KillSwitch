@@ -14,54 +14,47 @@ int b11;  //to temporarily remember the last Broadcast data of the realy
 
 int bedtime = 0; //1= its time for bed. 0= its time to stay awake.
 
+int ST = 5; //minutes of radio inactivity before XBEE goes into sleep mode
+
+int SP = 25; //minutes XBEE will sleep before waking the radio back up
+
 ////// SETUP //////
 
 void setup() {
 
-  
-  
-pinMode(r1, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
+pinMode(r10, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
 
- digitalWrite(r1, HIGH);  //ground ignition at startup for safety. verify connection before allowin engine to run.
+digitalWrite(r10, LOW);  //ground ignition at startup for safety. verify connection before allowing engine to run.
   //if battery dies overnighht well will be down in the morning.
-  
-  wdt_disable(); //turn off timer to prevent errors on setup
-  sei();  //enable interrupts
-  ADCSRA |= (1<<ADEN); //ADC hex code set to on
-  power_adc_enable(); //enable ADC module    
-
-  
-    //START COMMUNICATING WITH XBEE
-Serial.begin(9600);
-  
+    
 }
 
 ///// LOOP /////
 
 void loop() {
 
-  while (bedtime=0){
+while (bedtime=0){
 
-    
-while (Serial.available()>0){    
-    
-char RXbyte = char(Serial.read());
+Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
+
+delay(2000);                              //wait 2 seconds  
   
+while (Serial.available()>0){             //if message available...
+    
+char RXbyte = char(Serial.read());        //read message...
   
-  if (RXbyte == 'K') {
-    digitalWrite(r1, HIGH);
-    Serial.print('k');
-    wdt_reset();
+  if (RXbyte == 'K') {                    //if message is "K"...
+    digitalWrite(r10, LOW);               //close iginition circuit
+    Serial.print('k');                    //send "k" message to confirm relay has been flipped
   }
-if (RXbyte == 'A') {
-    digitalWrite(r1, LOW);
-    Serial.print('a');
-    wdt_reset();
+if (RXbyte == 'A') {                      //if message is "A"...
+    digitalWrite(r1, HIGH);               //open iginition circuit
+    Serial.print('a');                    //send "a" message to confirm relay has been flipped
   }
 
-if (RXbyte == 'Z') {
-    Serial.print('z');
-    wdt_reset();
+if (RXbyte == 'Z') {                      //when level box recieves confirmation is sends "Z" 
+    Serial.print('z');                    //send "z" to confirm
+  
   }
 
 if (RXbyte == 'z') {
