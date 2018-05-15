@@ -32,10 +32,10 @@ pinMode(p10,INPUT_PULLUP); //define liquid level pin mode
 
 void loop() {
   
-s10 = digitalRead(p10);
+debounce();
 if (s1 != b1) {          //If the current state of the switch is not the same as the last broad cast...
 Serial.begin(9600);      //START COMMUNICATING WITH XBEE
-  delay(2000);           //wait 2 seconds
+  delay(5000);           //wait 2 seconds
   if (s1 == LOW) {       //And If the current state of the switch is "low", AKA the switch is tripped...      
     Serial.print('K');   //Send the Kill Signal
     b1 = LOW;            //After broadcasting kill signal, define "the last broadcast" as "low"
@@ -43,26 +43,9 @@ Serial.begin(9600);      //START COMMUNICATING WITH XBEE
     Serial.print('A');   //Send Alive Signal
     b1 = HIGH;           //After broadcasting alive signal, define "the last broadcast" as "high"
   }
-  freshb = true;         //After broadcasting a new message, change "fresh broadcast" state to true
+
 }
   
-}
-
-
-//send message if nothing has been sent recently
-///////need to convert this section to a sleep mode + sleep counter
-if (freshb = false) {
-  freshc ++; //add one to fresh count
-  if(freshc >= fresho) {
-    if (freshf = 1) {
-      Serial.print('Z');
-      freshf = 0;
-    }
-    else {
-      Serial.print('z');
-      freshf = 1;
-    }
-  }
 }
 
 } //end main loop  
