@@ -10,6 +10,10 @@ int b10;  //to temporarily remember the last Broadcast data for the switch
 
 int s10 = digitalRead(10);  //to handle data of current State of a switch
 
+int ST = 5; //minutes of radio inactivity before XBEE goes into sleep mode
+
+int SP = 25; //minutes XBEE will sleep before waking the radio back up
+
 boolean freshb = false; //keep track of weather a new broadcast has been send each loop
 int freshc = 0; //keep track of last fresh broadcast
 int freshf = 1; // flip bit to send different message each time
