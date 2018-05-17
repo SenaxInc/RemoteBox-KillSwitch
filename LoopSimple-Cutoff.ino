@@ -4,19 +4,23 @@
 
 ////// VARIABLES //////
 
-int p11 = 11; //define "read" Pin to confirm relay has been flipped
+int p11 = 11;                 //define "read" Pin to confirm relay has been flipped
 
-int r10 = 10; //define "write" pins to control Relay module
+int r10 = 10;                 //define "write" pins to control Relay module
 
-int s11 = digitalRead(11);  //to handle data of current State of the relay
+int s11 = digitalRead(11);    //to handle data of current State of the relay
 
-int b11;  //to temporarily remember the last Broadcast data of the realy
+int b11;                      //to temporarily remember the last Broadcast data of the realy
 
-int bedtime = 0; //1= its time for bed. 0= its time to stay awake.
+int bedtime = 0;              //1= its time for bed. 0= its time to stay awake.
 
-int ST = 5; //minutes of radio inactivity before XBEE goes into sleep mode
+int st = 5;                   //minutes of radio inactivity before XBEE goes into sleep mode
 
-int SP = 25; //minutes XBEE will sleep before waking the radio back up
+int sp = 25;                  //minutes XBEE will sleep before waking the radio back up
+
+int timeout = 0;
+
+int tick8 = 0;
 
 ////// SETUP //////
 
@@ -49,7 +53,7 @@ char RXbyte = char(Serial.read());        //read message...
     timeout=1;
   }
 if (RXbyte == 'A') {                      //if message is "A"...
-    digitalWrite(r1, HIGH);               //open iginition circuit
+    digitalWrite(r10, HIGH);               //open iginition circuit
     Serial.print('a');                    //send "a" message to confirm relay has been flipped
     timeout=1;
   }
@@ -60,7 +64,7 @@ if (RXbyte == 'Z') {                      //when level box recieves confirmation
   }
 
 if (RXbyte == 'z') {
-    Serial.end(9600);                    //end communication with xbee
+                                         //end communication with xbee
     bedtime=1;                           //initiate bedtime next loop
     timeout=1;
   }
@@ -75,6 +79,8 @@ if (RXbyte == 'z') {
 
 } //end awake while
 
+} //end bedtime=0 while
+
 while (bedtime=1){
 
  delay(8000);                             //wait 8 seconds
@@ -87,4 +93,3 @@ if (tick8>180){                          //after 24 minutes...
 } //end bedtime=1 while
   
 } //end main loop
-
