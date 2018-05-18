@@ -36,3 +36,6 @@
   * SO - 8
   * ST - 493E0
   * SP - 249F0
+
+  * http://docs.digi.com/display/XBeeArduinoCodingPlatform/Sleep+mode
+  * http://cms.digi.com/resources/documentation/digidocs/90001537/references/r_xbee_sleeping_problems.htm?TocPath=Categories%7CWorking%20with%20Zigbee%7C_____27
