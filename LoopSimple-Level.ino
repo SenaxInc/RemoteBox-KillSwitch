@@ -30,6 +30,9 @@ void setup() {
 
 pinMode(p10,INPUT_PULLUP); //define liquid level pin mode
   
+Serial.begin(9600);      //START COMMUNICATING WITH XBEE  
+delay(5000);                              //wait 5 seconds    
+  
 }
 
 //// LOOP ////
@@ -38,8 +41,6 @@ void loop() {
   
 while (bedtime=0){  
   
-Serial.begin(9600);      //START COMMUNICATING WITH XBEE  
-delay(5000);                              //wait 5 seconds  
     
 ////// DEBOUNCE
 
