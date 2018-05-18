@@ -30,3 +30,6 @@
 
   * http://opensourceecology.org/wiki/MicroTrac_Controller_v17.10/Code
 
+## XBEE SETTINGS
+
+  * NI - Name for Module
