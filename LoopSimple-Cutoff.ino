@@ -31,6 +31,9 @@ pinMode(r10, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
 digitalWrite(r10, LOW);  //ground ignition at startup for safety. verify connection before allowing engine to run.
   //if battery dies overnighht well will be down in the morning.
     
+Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
+
+delay(5000);       
 }
 
 ///// LOOP /////
@@ -39,9 +42,7 @@ void loop() {
 
 while (bedtime=0){
 
-Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
-
-delay(5000);                              //wait 5 seconds  
+                       //wait 5 seconds  
   
 while (Serial.available()>0){             //if message available...
     
@@ -65,9 +66,12 @@ if (RXbyte == 'Z') {                      //when level box recieves confirmation
 
 if (RXbyte == 'z') {
                                          //end communication with xbee
+   delay(300000);
     bedtime=1;                           //initiate bedtime next loop
     timeout=1;
   }
+
+} //end serial available while
 
   delay(5000);
   timeout++;
@@ -75,10 +79,8 @@ if (RXbyte == 'z') {
   if (timeout>720000) {                   //if timout count is greater than 1 hour....
     digitalWrite(r10, LOW);               //close iginition circuit, kill engine
     Serial.print('k');                    //send "k" message to confirm relay has been flipped
-  }
-
-} //end awake while
-
+  }  
+  
 } //end bedtime=0 while
 
 while (bedtime=1){
@@ -86,7 +88,7 @@ while (bedtime=1){
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
   
-if (tick8>180){                          //after 24 minutes...
+if (tick8>225){                          //after 30 minutes...
     bedtime=0;                           //end bedtime
 }                                        //end tick8 if  
   
