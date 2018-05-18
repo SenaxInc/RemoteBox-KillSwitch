@@ -33,3 +33,6 @@
 ## XBEE SETTINGS
 
   * NI - Name for Module
+  * SO - 8
+  * ST - 493E0
+  * SP - 249F0
