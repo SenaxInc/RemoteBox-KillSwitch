@@ -103,6 +103,7 @@ if (RXbyte == 'a') { //if message is "a"...
  
 if (RXbyte == 'z') {
                                          //end communication with xbee
+    delay(300000);
     bedtime=1;                           //initiate bedtime next loop
 }
 
@@ -117,7 +118,7 @@ while (bedtime=1){
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
   
-if (tick8>180){                          //after 24 minutes...
+if (tick8>225){                          //after 30 minutes...
     bedtime=0;                           //end bedtime
 }                                        //end tick8 if  
   
