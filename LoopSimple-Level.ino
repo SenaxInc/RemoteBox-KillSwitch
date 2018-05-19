@@ -23,9 +23,31 @@ int tick8=0;
 void setup() {
 
 pinMode(p10,INPUT_PULLUP); //define liquid level pin mode
-  
+
+pinMode(13, OUTPUT);
+
 Serial.begin(9600);      //START COMMUNICATING WITH XBEE  
-delay(5000);                              //wait 5 seconds    
+
+  
+    Serial.print('A');  
+    digitalWrite(13, LOW);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(13, HIGH);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(13, LOW);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(13, HIGH);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(13, LOW);
+    delay(1000);  
+  
+    bedtime = 0;
+  
+  delay(5000);                              //wait 5 seconds    
   
 }
 
@@ -36,8 +58,15 @@ void loop() {
 while (bedtime=0){  
   
    // read the state of the switch into a local variable:
-  int s10 = digitalRead(p10);
+s10 = digitalRead(p10);
+delay(10);
+  s10 = digitalRead(p10);
+delay(10);
+  s10 = digitalRead(p10);
+delay(10);
+  s10 = digitalRead(p10);
 
+  
 delay(5000);           //wait 5 seconds
   
   if (s10 == LOW) {       //And If the current state of the switch is "low", AKA the switch is tripped...      
