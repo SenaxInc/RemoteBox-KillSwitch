@@ -30,6 +30,8 @@ pinMode(r10, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
 
 digitalWrite(r10, LOW);  //ground ignition at startup for safety. verify connection before allowing engine to run.
   //if battery dies overnighht well will be down in the morning.
+
+pinMode(p11,INPUT_PULLUP); //define liquid level pin mode
     
 Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
 
@@ -50,13 +52,25 @@ char RXbyte = char(Serial.read());        //read message...
   
   if (RXbyte == 'K') {                    //if message is "K"...
     digitalWrite(r10, LOW);               //close iginition circuit
+    delay(5000);
+    int s11 = digitalRead(p11);
+    if (s11 == HIGH){
     Serial.print('k');                    //send "k" message to confirm relay has been flipped
     timeout=1;
+    } else {
+    Serial.print('E');  
+    }
   }
 if (RXbyte == 'A') {                      //if message is "A"...
     digitalWrite(r10, HIGH);               //open iginition circuit
-    Serial.print('a');                    //send "a" message to confirm relay has been flipped
+    delay(5000);
+    int s11 = digitalRead(p11);
+    if (s11 == LOW){
+    Serial.print('a');                    //send "k" message to confirm relay has been flipped
     timeout=1;
+    } else {
+    Serial.print('E');  
+    }
   }
 
 if (RXbyte == 'Z') {                      //when level box recieves confirmation is sends "Z" 
