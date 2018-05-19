@@ -35,7 +35,24 @@ pinMode(p11,INPUT_PULLUP); //define liquid level pin mode
     
 Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
 
-delay(5000);       
+    Serial.print('A');  
+    digitalWrite(r10, LOW);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(r10, HIGH);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(r10, LOW);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(r10, HIGH);
+    delay(1000);
+    Serial.print('A');  
+    digitalWrite(r10, LOW);
+    delay(1000);  
+  
+    bedtime = 0;
+  
 }
 
 ///// LOOP /////
@@ -64,7 +81,7 @@ char RXbyte = char(Serial.read());        //read message...
 if (RXbyte == 'A') {                      //if message is "A"...
     digitalWrite(r10, HIGH);               //open iginition circuit
     delay(5000);
-    int s11 = digitalRead(p11);
+    s11 = digitalRead(p11);
     if (s11 == LOW){
     Serial.print('a');                    //send "k" message to confirm relay has been flipped
     timeout=1;
