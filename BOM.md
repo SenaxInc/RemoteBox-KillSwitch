@@ -14,3 +14,5 @@ No. | Name | Link
 2 | Antenna 870-960 MHz | https://www.excel-wireless.com/900-mhz-omni-directional-antenna
 2 | Arduino Uno | https://www.mouser.com/ProductDetail/Arduino/A000066
 2 | Terminal Block | https://www.homedepot.com/p/Gardner-Bender-22-10-AWG-6-Circuit-Terminal-Block-1-Pack-GTB-406/202522482
+2 | SunKeeper-6 | https://www.solar-electric.com/mosupamoco6a.html
+2 | Optima D31T | https://www.walmart.com/ip/OPTIMA-YellowTop-Dual-Purpose-Battery-Group-d31t/579876980
