@@ -18,11 +18,9 @@ int s10 = digitalRead(p10);  //to handle data of current State of a switch
 
 int bedtime = 0;
 
-int st = 5; //minutes of radio inactivity before XBEE goes into sleep mode
-
-int sp = 25; //minutes XBEE will sleep before waking the radio back up
-
 int tick8=0;
+
+int sleeptick8s=225;   //how many sets of 8 seconds to wait before starting up again
 
 ////// SETUP //////
 
@@ -65,7 +63,7 @@ delay(2000);                          //give it a few seconds to catch its breat
 
 void loop() {
   
-while (bedtime=0){  
+while (bedtime==0){  
   
    // read the state of the switch into a local variable:
 s10 = digitalRead(p10);
@@ -104,12 +102,12 @@ if (RXbyte == 'z') {
 
 } //end bedtime=0
 
-while (bedtime=1){
+while (bedtime==1){
     digitalWrite(9, HIGH);
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
   
-if (tick8>225){                          //after 30 minutes...
+if (tick8>sleeptick8s){                          //after 30 minutes...
     bedtime=0;                           //end bedtime
       digitalWrite(9, LOW);
   delay(5000);
