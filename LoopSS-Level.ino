@@ -36,6 +36,8 @@ pinMode(9, OUTPUT);  //XBee sleepmode pin. High=sleep. Low-awake.
 
 XBee.begin(9600);      //START COMMUNICATING WITH XBEE  
 
+digitalWrite(9, LOW);                 //wake up XBee
+delay(2000);                          //give it a few seconds to catch its breath
   
     XBee.print('A');  
     digitalWrite(13, LOW);
