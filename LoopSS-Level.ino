@@ -32,22 +32,22 @@ pinMode(p10,INPUT_PULLUP); //define liquid level pin mode
 
 pinMode(13, OUTPUT);
 
-Serial.begin(9600);      //START COMMUNICATING WITH XBEE  
+XBee.begin(9600);      //START COMMUNICATING WITH XBEE  
 
   
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(13, LOW);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(13, HIGH);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(13, LOW);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(13, HIGH);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(13, LOW);
     delay(1000);  
   
@@ -76,22 +76,22 @@ delay(10);
 delay(5000);           //wait 5 seconds
   
   if (s10 == LOW) {       //And If the current state of the switch is "low", AKA the switch is tripped...      
-    Serial.print('K');   //Send the Kill Signal
+    XBee.print('K');   //Send the Kill Signal
     delay(5000);     
   } else {               //If the switch was not "low"...
-    Serial.print('A');   //Send Alive Signal
+    XBee.print('A');   //Send Alive Signal
     delay(5000);     
   }
   
-while (Serial.available()>0){             //if message available...
+while (XBee.available()>0){             //if message available...
     
-char RXbyte = char(Serial.read()); //read message...
+char RXbyte = char(XBee.read()); //read message...
   
 if (RXbyte == 'k') { //if message is "k"...
-    Serial.print('Z'); 
+    XBee.print('Z'); 
 }
 if (RXbyte == 'a') { //if message is "a"...
-    Serial.print('Z'); 
+    XBee.print('Z'); 
 }  
  
 if (RXbyte == 'z') {
@@ -102,7 +102,7 @@ if (RXbyte == 'z') {
 
 delay(5000);
   
-} //end serial available while
+} //end XBee.available while
 
 } //end bedtime=0
 
