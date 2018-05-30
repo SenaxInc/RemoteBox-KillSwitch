@@ -30,7 +30,9 @@ void setup() {
 
 pinMode(p10,INPUT_PULLUP); //define liquid level pin mode
 
-pinMode(13, OUTPUT);
+pinMode(13, OUTPUT);  //LED
+  
+pinMode(9, OUTPUT);  //XBee sleepmode pin. High=sleep. Low-awake.
 
 XBee.begin(9600);      //START COMMUNICATING WITH XBEE  
 
@@ -71,9 +73,6 @@ delay(10);
   s10 = digitalRead(p10);
 delay(10);
   s10 = digitalRead(p10);
-
-  
-delay(5000);           //wait 5 seconds
   
   if (s10 == LOW) {       //And If the current state of the switch is "low", AKA the switch is tripped...      
     XBee.print('K');   //Send the Kill Signal
@@ -95,24 +94,23 @@ if (RXbyte == 'a') { //if message is "a"...
 }  
  
 if (RXbyte == 'z') {
-                                         //end communication with xbee
-    delay(300000);
     bedtime=1;                           //initiate bedtime next loop
 }
 
-delay(5000);
   
 } //end XBee.available while
 
 } //end bedtime=0
 
 while (bedtime=1){
-
+    digitalWrite(9, HIGH);
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
   
 if (tick8>225){                          //after 30 minutes...
     bedtime=0;                           //end bedtime
+      digitalWrite(9, LOW);
+  delay(5000);
 }                                        //end tick8 if  
   
 } //end bedtime=1 while
