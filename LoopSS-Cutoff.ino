@@ -39,21 +39,21 @@ digitalWrite(r10, LOW);  //ground ignition at startup for safety. verify connect
 
 pinMode(p11,INPUT_PULLUP); //define liquid level pin mode
     
-Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
+XBee.begin(9600);                       //START COMMUNICATING WITH XBEE
 
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(r10, LOW);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(r10, HIGH);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(r10, LOW);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(r10, HIGH);
     delay(1000);
-    Serial.print('A');  
+    XBee.print('A');  
     digitalWrite(r10, LOW);
     delay(1000);  
   
@@ -69,19 +69,19 @@ while (bedtime=0){
 
                        //wait 5 seconds  
   
-while (Serial.available()>0){             //if message available...
+while (XBee.available()>0){             //if message available...
     
-char RXbyte = char(Serial.read());        //read message...
+char RXbyte = char(XBee.read());        //read message...
   
   if (RXbyte == 'K') {                    //if message is "K"...
     digitalWrite(r10, LOW);               //close iginition circuit
     delay(5000);
     int s11 = digitalRead(p11);
     if (s11 == HIGH){
-    Serial.print('k');                    //send "k" message to confirm relay has been flipped
+    XBee.print('k');                    //send "k" message to confirm relay has been flipped
     timeout=1;
     } else {
-    Serial.print('E');  
+    XBee.print('E');  
     }
   }
 if (RXbyte == 'A') {                      //if message is "A"...
@@ -89,15 +89,15 @@ if (RXbyte == 'A') {                      //if message is "A"...
     delay(5000);
     s11 = digitalRead(p11);
     if (s11 == LOW){
-    Serial.print('a');                    //send "k" message to confirm relay has been flipped
+    XBee.print('a');                    //send "k" message to confirm relay has been flipped
     timeout=1;
     } else {
-    Serial.print('E');  
+    XBee.print('E');  
     }
   }
 
 if (RXbyte == 'Z') {                      //when level box recieves confirmation is sends "Z" 
-    Serial.print('z');                    //send "z" to confirm
+    XBee.print('z');                    //send "z" to confirm
     timeout=1;
   }
 
@@ -115,7 +115,7 @@ if (RXbyte == 'z') {
   
   if (timeout>720000) {                   //if timout count is greater than 1 hour....
     digitalWrite(r10, LOW);               //close iginition circuit, kill engine
-    Serial.print('k');                    //send "k" message to confirm relay has been flipped
+    XBee.print('k');                    //send "k" message to confirm relay has been flipped
   }  
   
 } //end bedtime=0 while
