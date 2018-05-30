@@ -2,8 +2,7 @@
 
 ///////////////////////////
 
-// We'll use SoftwareSerial to communicate with the XBee:
-#include <SoftwareSerial.h>
+#include <SoftwareSerial.h>  // SoftwareSerial used to communicate with the XBee from Arduino
 // XBee's DOUT (TX) is connected to pin 2 (Arduino's Software RX)
 // XBee's DIN (RX) is connected to pin 3 (Arduino's Software TX)
 SoftwareSerial XBee(2, 3); // RX, TX
@@ -38,7 +37,12 @@ digitalWrite(r10, LOW);  //ground ignition at startup for safety. verify connect
   //if battery dies overnighht well will be down in the morning.
 
 pinMode(p11,INPUT_PULLUP); //define liquid level pin mode
-    
+  
+pinMode(9, OUTPUT); //XBee sleepmode pin. High=sleep. Low=awake.  
+
+digitalWrite(9, LOW);                 //wake up XBee
+delay(2000);
+  
 XBee.begin(9600);                       //START COMMUNICATING WITH XBEE
 
     XBee.print('A');  
@@ -65,7 +69,7 @@ XBee.begin(9600);                       //START COMMUNICATING WITH XBEE
 
 void loop() {
 
-while (bedtime=0){
+while (bedtime==0){
 
                        //wait 5 seconds  
   
@@ -76,7 +80,7 @@ char RXbyte = char(XBee.read());        //read message...
   if (RXbyte == 'K') {                    //if message is "K"...
     digitalWrite(r10, LOW);               //close iginition circuit
     delay(5000);
-    int s11 = digitalRead(p11);
+    s11 = digitalRead(p11);
     if (s11 == HIGH){
     XBee.print('k');                    //send "k" message to confirm relay has been flipped
     timeout=1;
@@ -120,13 +124,14 @@ if (RXbyte == 'z') {
   
 } //end bedtime=0 while
 
-while (bedtime=1){
-
+while (bedtime==1){
+ digitalWrite(9, HIGH);                   //put XBee to sleep
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
   
 if (tick8>225){                          //after 30 minutes...
     bedtime=0;                           //end bedtime
+   digitalWrite(9, LOW);                 //wake up XBee
 }                                        //end tick8 if  
   
 } //end bedtime=1 while
