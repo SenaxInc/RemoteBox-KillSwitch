@@ -10,4 +10,6 @@ No. | Name | Link
 2 | Panel Plug N-SMA | https://www.mouser.com/ProductDetail/455-34NSMA501193UE
 2 | Cable 24" N-N | https://www.mouser.com/ProductDetail/549-CCN-MM-RG58-24
 2 | Cable 6" SMA-SMA | https://www.mouser.com/ProductDetail/549-CCSMA-MM-086-6
+2 | Adapter RP-SMA M - SMA F | https://www.mouser.com/ProductDetail/712-ADP-RPSM-SMAF
 2 | Antenna 870-960 MHz | https://www.excel-wireless.com/900-mhz-omni-directional-antenna
+2 | Arduino Uno | https://www.mouser.com/ProductDetail/Arduino/A000066
