@@ -13,3 +13,4 @@ No. | Name | Link
 2 | Adapter RP-SMA M - SMA F | https://www.mouser.com/ProductDetail/712-ADP-RPSM-SMAF
 2 | Antenna 870-960 MHz | https://www.excel-wireless.com/900-mhz-omni-directional-antenna
 2 | Arduino Uno | https://www.mouser.com/ProductDetail/Arduino/A000066
+2 | Terminal Block | https://www.homedepot.com/p/Gardner-Bender-22-10-AWG-6-Circuit-Terminal-Block-1-Pack-GTB-406/202522482
