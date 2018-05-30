@@ -1,6 +1,13 @@
 
 No. | Name | Link
 --- | --- | ---
-2 | 3.3V Zener Diode | https://www.mouser.com/ProductDetail/Vishay/BZX55C3V3-TR?qs=oNDV51lhjEOXHzaj5oUL6w%3D%3D&gclid=EAIaIQobChMI8Y-34Y-Q2wIV0zaBCh1n2wm4EAQYASABEgJo6PD_BwE
+2 | 3.3V Zener Diode | https://www.mouser.com/ProductDetail/625-BZX55C3V3
 2 | 100Ohm Resistor | https://www.sparkfun.com/products/14493
+2 | XBee Radio 902-928MHz | https://www.mouser.com/ProductDetail/888-XBP9B-DPST-001
 2 | SparkFun XBee Shield | https://www.sparkfun.com/products/12847
+1 | Jumper Wire M-M | https://www.mouser.com/ProductDetail/932-MIKROE-513
+1 | Jumper Wire M-F | https://www.mouser.com/ProductDetail/932-MIKROE-512
+2 | Panel Plug N-SMA | https://www.mouser.com/ProductDetail/455-34NSMA501193UE
+2 | Cable 24" N-N | https://www.mouser.com/ProductDetail/549-CCN-MM-RG58-24
+2 | Cable 6" SMA-SMA | https://www.mouser.com/ProductDetail/549-CCSMA-MM-086-6
+2 | Antenna 870-960 MHz | https://www.excel-wireless.com/900-mhz-omni-directional-antenna
