@@ -59,7 +59,7 @@ Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
 
 void loop() {
 
-while (bedtime=0){
+while (bedtime==0){
 
                        //wait 5 seconds  
   
@@ -114,7 +114,7 @@ if (RXbyte == 'z') {
   
 } //end bedtime=0 while
 
-while (bedtime=1){
+while (bedtime==1){
 
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
