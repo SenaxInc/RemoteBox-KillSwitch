@@ -53,7 +53,7 @@ Serial.begin(9600);      //START COMMUNICATING WITH XBEE
 
 //send message if nothing has been sent recently
 ///////need to convert this section to a sleep mode + sleep counter
-if (freshb = false) {
+if (freshb == false) {
   freshc ++; //add one to fresh count
   if(freshc >= fresho) {
     if (freshf = 1) {
