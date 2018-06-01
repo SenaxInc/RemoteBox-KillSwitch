@@ -45,7 +45,7 @@ Serial.begin(9600);
 
 void loop() {
 
-  while (bedtime=0){
+  while (bedtime==0){
 
     
 while (Serial.available()>0){    
@@ -95,14 +95,14 @@ sei(); //enable interrupts
   
 } //end awake while
 
-while (bedtime=1){
+while (bedtime==1){
   
 tickSleep();  //puts arduino to sleep for about 8 seconds
   
 if (tick8>1800){
   Serial.begin(9600);
 
-  while (bedtime=1){
+  while (bedtime==1){
           
   Serial.print('W');
     wdt_reset();
