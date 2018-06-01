@@ -56,7 +56,7 @@ Serial.begin(9600);      //START COMMUNICATING WITH XBEE
 if (freshb == false) {
   freshc ++; //add one to fresh count
   if(freshc >= fresho) {
-    if (freshf = 1) {
+    if (freshf == 1) {
       Serial.print('Z');
       freshf = 0;
     }
