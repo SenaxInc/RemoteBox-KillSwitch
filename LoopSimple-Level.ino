@@ -55,7 +55,7 @@ Serial.begin(9600);      //START COMMUNICATING WITH XBEE
 
 void loop() {
   
-while (bedtime=0){  
+while (bedtime==0){  
   
    // read the state of the switch into a local variable:
 s10 = digitalRead(p10);
@@ -100,7 +100,7 @@ delay(5000);
 
 } //end bedtime=0
 
-while (bedtime=1){
+while (bedtime==1){
 
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
