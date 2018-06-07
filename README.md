@@ -17,3 +17,8 @@
 
 
 ![Image](WiringDiagram-2018.svg)
+
+## Solder Diagram
+
+
+![Image](Sensor Box - XBee Shield Solder Diagram.svg)
