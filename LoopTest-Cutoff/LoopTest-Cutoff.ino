@@ -21,7 +21,7 @@ int timeout = 0;
 
 int tick8 = 0;
 
-int sleeptick8s=30;   //how many sets of 8 seconds to wait before starting up again  225 
+int sleeptick8s=225;   //how many sets of 8 seconds to wait before starting up again  225 
 
 
 ////// SETUP //////
@@ -101,7 +101,7 @@ if (RXbyte == 'Z') {                      //when level box recieves confirmation
   }
 
 if (RXbyte == 'z') {
-                                         //end communication with xbee
+    delay(8000);
     bedtime=1;                           //initiate bedtime next loop
     timeout=1;
   }

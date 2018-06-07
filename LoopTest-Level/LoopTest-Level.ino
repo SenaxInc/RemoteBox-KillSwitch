@@ -18,13 +18,14 @@ int bedtime = 0;
 
 int tick8=0;
 
-int sleeptick8s=30;   //how many sets of 8 seconds to wait before starting up again  225 
+int sleeptick8s=225;   //how many sets of 8 seconds to wait before starting up again  225 
 
 ////// SETUP //////
 
 void setup() {
 
-pinMode(lvlpin,INPUT_PULLUP); //define liquid level pin mode
+pinMode(lvlpin,INPUT); //define liquid level pin mode
+digitalWrite(lvlpin,HIGH);
 
 pinMode(13, OUTPUT);  //LED
   
@@ -63,9 +64,13 @@ void loop() {
   
   
    // read the state of the switch into a local variable:
+digitalWrite(lvlpin, HIGH);
+delay(2000);
   lvlstate = digitalRead(lvlpin);
   delay(10);
   lvlstate = digitalRead(lvlpin);
+delay(2000);
+digitalWrite(lvlpin, LOW);
 
   if (lvlstate == HIGH) {       //And If the current state of the switch is "HIGH", AKA the N.C. switch is tripped...      
     Serial.print('K');   //Send the Kill Signal
@@ -90,6 +95,7 @@ if (RXbyte == 'a') { //if message is "a"...
  
 if (RXbyte == 'z') {
     Serial.print('z');                  //going to sleep
+    delay(8000);
     bedtime=1;                           //initiate bedtime next loop
 }
 
