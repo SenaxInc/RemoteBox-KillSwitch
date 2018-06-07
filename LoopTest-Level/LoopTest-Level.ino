@@ -76,6 +76,8 @@ void loop() {
   }
   
 if (Serial.available()>0){             //if message available...
+//could this if be written as a while(serial available && bedtime=0)
+
     
 char RXbyte = char(Serial.read()); //read message...
   
