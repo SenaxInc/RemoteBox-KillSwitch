@@ -82,13 +82,14 @@ while (bedtime==0 && Serial.available()>0){             //if message available..
 char RXbyte = char(Serial.read()); //read message...
   
 if (RXbyte == 'k') { //if message is "k"...
-    Serial.print('Z'); 
+    Serial.print('Z');                  //ready to sleep
 }
 if (RXbyte == 'a') { //if message is "a"...
-    Serial.print('Z'); 
+    Serial.print('Z');                  //ready to sleep
 }  
  
 if (RXbyte == 'z') {
+    Serial.print('z');                  //going to sleep
     bedtime=1;                           //initiate bedtime next loop
 }
 
@@ -99,6 +100,12 @@ while (bedtime==1){
     digitalWrite(9, HIGH);
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
+
+//blink
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(13, LOW);
+//end blink
   
 if (tick8>sleeptick8s){                          //after 30 minutes...
     tick8=0;

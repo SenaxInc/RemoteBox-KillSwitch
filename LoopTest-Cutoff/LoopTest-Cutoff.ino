@@ -95,8 +95,8 @@ if (RXbyte == 'A') {                      //if message is "A"...
     }
   }
 
-if (RXbyte == 'Z') {                      //when level box recieves confirmation is sends "Z" 
-    Serial.print('z');                    //send "z" to confirm
+if (RXbyte == 'Z') {                      //when level box recieves confirmation is sends "Z" for "ready to sleep"
+    Serial.print('z');                    //send "z" to confirm  "cut off ready to sleep"
     timeout=1;
   }
 
@@ -121,6 +121,13 @@ while (bedtime==1){
  digitalWrite(9, HIGH);                   //put XBee to sleep
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
+ 
+//blink
+    digitalWrite(13, HIGH);
+    delay(500);
+    digitalWrite(13, LOW);
+//end blink
+                           
   
 if (tick8>sleeptick8s){                          //after 30 minutes...
     tick8=0;
