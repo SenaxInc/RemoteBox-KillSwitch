@@ -2,7 +2,7 @@
 No. | Name | Link
 --- | --- | ---
 2 | 3.3V Zener Diode | https://www.mouser.com/ProductDetail/625-BZX55C3V3
-2 | 100Ohm Resistor | https://www.sparkfun.com/products/14493
+4 | 100Ohm Resistor | https://www.sparkfun.com/products/14493
 2 | XBee Radio 902-928MHz | https://www.mouser.com/ProductDetail/888-XBP9B-DPST-001
 2 | SparkFun XBee Shield | https://www.sparkfun.com/products/12847
 1 | Jumper Wire M-M | https://www.mouser.com/ProductDetail/932-MIKROE-513
