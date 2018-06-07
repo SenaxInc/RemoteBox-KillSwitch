@@ -18,7 +18,7 @@ int bedtime = 0;
 
 int tick8=0;
 
-int sleeptick8s=15;   //how many sets of 8 seconds to wait before starting up again  225 
+int sleeptick8s=30;   //how many sets of 8 seconds to wait before starting up again  225 
 
 ////// SETUP //////
 
@@ -75,7 +75,7 @@ void loop() {
     delay(5000);     
   }
   
-if (Serial.available()>0){             //if message available...
+while (bedtime==0 && Serial.available()>0){             //if message available...
 //could this if be written as a while(serial available && bedtime=0)
 
     
@@ -101,12 +101,23 @@ while (bedtime==1){
  tick8++;                                 //add 1 to "tick8"
   
 if (tick8>sleeptick8s){                          //after 30 minutes...
+    tick8=0;
     bedtime=0;                           //end bedtime
       digitalWrite(9, LOW);
-  delay(5000);
+      
+    digitalWrite(13, LOW);
+    delay(1000);
+    digitalWrite(13, HIGH);
+    delay(1000);
+    digitalWrite(13, LOW);
+    delay(1000);
+    digitalWrite(13, HIGH);
+    delay(1000);
+    digitalWrite(13, LOW);
+    delay(1000);  
 }                                        //end tick8 if  
   
-} //end bedtime=1 while
+} //end bedtime1 while
 
 } //end main loop  
 
