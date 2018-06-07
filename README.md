@@ -21,4 +21,4 @@
 ## Solder Diagram
 
 
-![Image](Sensor Box - XBee Shield Solder Diagram.svg)
+![Image](Sensor_Box_-_XBee_Shield_Solder_Diagram.svg)
