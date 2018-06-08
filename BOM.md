@@ -17,3 +17,4 @@ No. | Name | Link
 2 | SunKeeper-6 | https://www.solar-electric.com/mosupamoco6a.html
 2 | Optima D31T | https://www.walmart.com/ip/OPTIMA-YellowTop-Dual-Purpose-Battery-Group-d31t/579876980
 1 | N.C. Float Switch | https://www.grainger.com/product/DAYTON-Float-Switch-3BY75
+1 | 5V Relay Module | https://www.robotshop.com/en/2-channel-5v-relay-module-elf.html
