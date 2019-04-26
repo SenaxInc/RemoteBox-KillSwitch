@@ -33,9 +33,10 @@
 ## XBEE SETTINGS
 
   * NI - Name for Module
-  * SO - 8
-  * ST - 493E0
-  * SP - 249F0
+  * Sleeping using timer:
+      * SO - 8
+      * ST - 493E0
+      * SP - 249F0
 
   * http://docs.digi.com/display/XBeeArduinoCodingPlatform/Sleep+mode
   * https://www.digi.com/resources/documentation/Digidocs/90001477/reference/r_cmd_so.htm
