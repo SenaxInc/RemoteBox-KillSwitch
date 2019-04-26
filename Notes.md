@@ -33,7 +33,9 @@
 ## XBEE SETTINGS
 
   * NI - Name for Module
-  * Sleeping using timer:
+  * Sleep using arduino pin signal:
+      * SM - 1
+  * Sleep using timer:
       * SO - 8
       * ST - 493E0
       * SP - 249F0
