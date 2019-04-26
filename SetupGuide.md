@@ -1,15 +1,3 @@
-# Arduino
-
-Upload code to arduinos
-
-For the arduino monitoring the liquid level
-https://create.arduino.cc/editor/dorkmo/c2d4928e-15f0-4c2c-a119-536aa2c805b0/preview
-https://github.com/SenaxInc/RemoteBox-KillSwitch/blob/master/LoopTest-Level/LoopTest-Level.ino
-
-https://create.arduino.cc/editor/dorkmo/c1a42b12-49da-4830-a664-cde163ad2a28/preview
-https://github.com/SenaxInc/RemoteBox-KillSwitch/blob/master/LoopTest-Cutoff/LoopTest-Cutoff.ino
-
-
 # XBee
 
 Download XCTU
@@ -41,4 +29,24 @@ Unplug 2nd xbee and plug in the 1st
 
 Set the DH and DL as the SH and SL of the 2nd xbee
 
+# Arduino
+
+Upload code to arduinos
+
+  * For the arduino monitoring the liquid level
+      * https://create.arduino.cc/editor/dorkmo/c2d4928e-15f0-4c2c-a119-536aa2c805b0/preview
+      * https://github.com/SenaxInc/RemoteBox-KillSwitch/blob/master/LoopTest-Level/LoopTest-Level.ino
+  * For the arduino commanding the cut off relay
+      * https://create.arduino.cc/editor/dorkmo/c1a42b12-49da-4830-a664-cde163ad2a28/preview
+      * https://github.com/SenaxInc/RemoteBox-KillSwitch/blob/master/LoopTest-Cutoff/LoopTest-Cutoff.ino
+
+Gather all the parts for the Sparkfun XBee Shield - https://www.sparkfun.com/products/12847
+
+Solder the Resistor, Ziener Diode, and jumper wire to the as seen on diagram
+
+Flip DLINE/UART switch to DLINE
+
+Install the shields onto the arduinos
+
+Install the XBee onto the shields
 
