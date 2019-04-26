@@ -15,9 +15,30 @@ https://github.com/SenaxInc/RemoteBox-KillSwitch/blob/master/LoopTest-Cutoff/Loo
 Download XCTU
 https://www.digi.com/resources/documentation/digidocs/90001458-13/default.htm#concept/c_downloading_installing_xctu.htm%3FTocPath%3DDownload%2520and%2520install%2520XCTU%7C_____0
 
-Plug in Xbee Explorer Dongle to computer
-https://www.sparkfun.com/products/11697
-
 Open XCTU
 
+Plug in Xbee Explorer Dongle to computer - https://www.sparkfun.com/products/11697
+
+Ctrl+Shft+D to search for radio
+
 Change variables
+
+NI - Set a discriptive name of location and cutoff or level 
+
+SM - 1 pin sleep mode
+
+ID - #### pick a network ID
+
+Write down SH - Serial High and SL - Serial Low
+
+Unplug 1st XBee and Install 2nd
+
+Set the same parameters and enter the 1st's SH and SL into the DH - destination high and DL - destination low
+
+Write down the SH and SL
+
+Unplug 2nd xbee and plug in the 1st
+
+Set the DH and DL as the SH and SL of the 2nd xbee
+
+
