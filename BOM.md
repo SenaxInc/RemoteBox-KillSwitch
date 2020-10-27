@@ -15,8 +15,12 @@ No. | Name | Link
 
 ## Radio Options
 ### Long Rang Point to MultiPoint - Gauge within range of all cutoff points
+No. | Name | Link
+--- | --- | ---
 2 | XBee Radio 902-928MHz XBP9B-DPST-001 | https://www.mouser.com/ProductDetail/888-XBP9B-DPST-001
 ### Short Range Mesh Network - Gauge not within range of all cutoff points
+No. | Name | Link
+--- | --- | ---
 2 | XBee Radio 902-928MHz XBP9B-DMST-002 | https://www.mouser.com/ProductDetail/888-XBP9B-DMST-002
 
 ## Power Options
