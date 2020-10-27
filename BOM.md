@@ -13,16 +13,6 @@ No. | Name | Link
 2 | Terminal Block | https://www.homedepot.com/p/Gardner-Bender-22-10-AWG-6-Circuit-Terminal-Block-1-Pack-GTB-406/202522482
 1 | N.C. Float Switch | https://www.grainger.com/product/DAYTON-Float-Switch-3BY75
 
-## Radio Options
-### Long Rang Point to MultiPoint - Gauge within range of all cutoff points
-No. | Name | Link
---- | --- | ---
-2 | XBee Radio 902-928MHz XBP9B-DPST-001 | https://www.mouser.com/ProductDetail/888-XBP9B-DPST-001
-### Short Range Mesh Network - Gauge not within range of all cutoff points
-No. | Name | Link
---- | --- | ---
-2 | XBee Radio 902-928MHz XBP9B-DMST-002 | https://www.mouser.com/ProductDetail/888-XBP9B-DMST-002
-
 ## Power Options
 ### Solar Option - Off Grid Engines
 No. | Name | Link
@@ -38,3 +28,14 @@ No. | Name | Link
 --- | --- | ---
 1 | Solid State Relay | https://www.grainger.com/product/CRYDOM-Solid-State-Relay-1DTK4
 1 | 5V DC Power Supply | https://www.mouser.com/ProductDetail/436-PBA10F-5-N
+
+## Radio Options
+### Long Rang Point to MultiPoint - Gauge within range of all cutoff points
+No. | Name | Link
+--- | --- | ---
+2 | XBee Radio 902-928MHz XBP9B-DPST-001 | https://www.mouser.com/ProductDetail/888-XBP9B-DPST-001
+
+### Short Range Mesh Network - Gauge not within range of all cutoff points
+No. | Name | Link
+--- | --- | ---
+2 | XBee Radio 902-928MHz XBP9B-DMST-002 | https://www.mouser.com/ProductDetail/888-XBP9B-DMST-002
