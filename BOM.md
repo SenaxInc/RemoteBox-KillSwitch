@@ -1,7 +1,8 @@
 ## Common Parts
 No. | Name | Link
 --- | --- | ---
-2 | SparkFun XBee Shield | https://www.sparkfun.com/products/12847
+2 | SparkFun XBee Shield | https://www.mouser.com/ProductDetail/474-WRL-12847
+2 | Arduino Stackable Header Kit | https://www.mouser.com/ProductDetail/375-LS-00010
 1 | Jumper Wire M-M | https://www.mouser.com/ProductDetail/932-MIKROE-513
 1 | Jumper Wire M-F | https://www.mouser.com/ProductDetail/932-MIKROE-512
 2 | Panel Plug N-SMA | https://www.mouser.com/ProductDetail/455-34NSMA501193UE
