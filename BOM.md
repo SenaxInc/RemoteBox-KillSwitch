@@ -30,7 +30,7 @@ No. | Name | Link
 1 | 5V DC Power Supply | https://www.mouser.com/ProductDetail/436-PBA10F-5-N
 
 ## Radio Options
-### Long Rang Point to MultiPoint - Gauge within range of all cutoff points
+### Long Range Point to MultiPoint - Gauge within range of all cutoff points
 No. | Name | Link
 --- | --- | ---
 2 | XBee Radio 902-928MHz XBP9B-DPST-001 | https://www.mouser.com/ProductDetail/888-XBP9B-DPST-001
