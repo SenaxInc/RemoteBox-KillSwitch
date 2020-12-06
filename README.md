@@ -13,7 +13,7 @@
   * Morningstar SunKeeper-6 Charge Controller
   * Lead Acid Battery
 
-## Wiring Diagram
+## Wiring Diagram - Solar
 
 
 ![Image](WiringDiagram-2018.svg)
