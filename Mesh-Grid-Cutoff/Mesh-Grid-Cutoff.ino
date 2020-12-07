@@ -21,7 +21,7 @@ int timeout = 0;
 
 int tick8 = 0;
 
-int sleeptick8s=225;   //how many sets of 8 seconds to wait before starting up again  225 
+int sleeptick8s=75;   //how many sets of 8 seconds to wait before starting up again  225 
 
 
 ////// SETUP //////
@@ -149,4 +149,3 @@ if (tick8>sleeptick8s){                          //after 30 minutes...
 } //end bedtime=1 while
   
 } //end main loop
-
