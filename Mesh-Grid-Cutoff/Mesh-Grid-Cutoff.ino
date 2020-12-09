@@ -37,9 +37,9 @@ pinMode(confirmpin,INPUT_PULLUP); //define liquid level pin mode
 
 pinMode(13, OUTPUT);  //LED
   
-pinMode(9, OUTPUT); //XBee sleepmode pin. High=sleep. Low=awake.  
+//pinMode(9, OUTPUT); //XBee sleepmode pin. High=sleep. Low=awake.  
 
-digitalWrite(9, LOW);                 //wake up XBee
+//digitalWrite(9, LOW);                 //wake up XBee
 delay(2000);
   
 Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
@@ -118,7 +118,7 @@ if (RXbyte == 'z') {
   
 
 while (bedtime==1){
- digitalWrite(9, HIGH);                   //put XBee to sleep
+// digitalWrite(9, HIGH);                   //put XBee to sleep
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
  

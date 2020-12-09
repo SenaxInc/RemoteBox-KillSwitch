@@ -29,11 +29,11 @@ digitalWrite(lvlpin,HIGH);
 
 pinMode(13, OUTPUT);  //LED
   
-pinMode(9, OUTPUT);  //XBee sleepmode pin. High=sleep. Low-awake.
+//pinMode(9, OUTPUT);  //XBee sleepmode pin. High=sleep. Low-awake.
 
 Serial.begin(9600);      //START COMMUNICATING WITH XBEE  
 
-digitalWrite(9, LOW);                 //wake up XBee
+//digitalWrite(9, LOW);                 //wake up XBee
 delay(2000);                          //give it a few seconds to catch its breath
   
     Serial.print('A');  
@@ -103,7 +103,7 @@ if (RXbyte == 'z') {
 } //end Serial.available while
 
 while (bedtime==1){
-    digitalWrite(9, HIGH);
+//    digitalWrite(9, HIGH);
  delay(8000);                             //wait 8 seconds
  tick8++;                                 //add 1 to "tick8"
 
