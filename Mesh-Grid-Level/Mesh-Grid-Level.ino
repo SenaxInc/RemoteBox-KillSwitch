@@ -25,7 +25,7 @@ int sleeptick8s=75;   //how many sets of 8 seconds to wait before starting up ag
 void setup() {
 
 pinMode(lvlpin,INPUT); //define liquid level pin mode
-digitalWrite(lvlpin,HIGH);
+digitalWrite(lvlpin,HIGH);  //pin reads high when not connected to ground, will read low when connected to ground
 
 pinMode(13, OUTPUT);  //LED
   
@@ -37,25 +37,21 @@ Serial.begin(9600);      //START COMMUNICATING WITH XBEE
 delay(2000);                          //give it a few seconds to catch its breath
   
     Serial.print('A');  
-    digitalWrite(13, LOW);
-    delay(1000);
 
+    digitalWrite(13, LOW);  //blink twice
+    delay(1000);
     digitalWrite(13, HIGH);
     delay(1000);
-
     digitalWrite(13, LOW);
     delay(1000);
-
     digitalWrite(13, HIGH);
     delay(1000);
-
     digitalWrite(13, LOW);
     delay(1000);  
   
-    bedtime = 0;
+    bedtime = 0;  //set bedtime to 0
   
   delay(5000);                              //wait 5 seconds    
-  
 }
 
 //// LOOP ////
@@ -72,7 +68,7 @@ delay(2000);
 delay(2000);
 digitalWrite(lvlpin, LOW);
 
-  if (lvlstate == HIGH) {       //And If the current state of the switch is "HIGH", AKA the N.C. switch is tripped...      
+  if (lvlstate == HIGH) {       //If the state of the switch is "HIGH", AKA the N.C. switch is tripped...      
     Serial.print('K');   //Send the Kill Signal
     delay(5000);     
   } else {               //If the switch was not "HIGH"...
@@ -80,27 +76,7 @@ digitalWrite(lvlpin, LOW);
     delay(5000);     
   }
   
-while (bedtime==0 && Serial.available()>0){             //if message available...
-//could this if be written as a while(serial available && bedtime=0)
-
-    
-char RXbyte = char(Serial.read()); //read message...
-  
-if (RXbyte == 'k') { //if message is "k"...
-    Serial.print('Z');                  //ready to sleep
-}
-if (RXbyte == 'a') { //if message is "a"...
-    Serial.print('Z');                  //ready to sleep
-}  
- 
-if (RXbyte == 'z') {
-    Serial.print('z');                  //going to sleep
-    delay(8000);
-    bedtime=1;                           //initiate bedtime next loop
-}
-
-  
-} //end Serial.available while
+  bedtime=1;                           //initiate bedtime next loop
 
 while (bedtime==1){
 //    digitalWrite(9, HIGH);
