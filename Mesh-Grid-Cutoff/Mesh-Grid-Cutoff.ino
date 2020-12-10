@@ -31,7 +31,6 @@ void setup() {
 pinMode(relaypin, OUTPUT); //SET PINS AS OUTPUT TO RELAY MODULE
 
 digitalWrite(relaypin, LOW);  //ground ignition at startup for safety. verify connection before allowing engine to run.
-  //if battery dies overnighht well will be down in the morning.
 
 pinMode(confirmpin,INPUT_PULLUP); //define liquid level pin mode
 
@@ -45,22 +44,19 @@ delay(2000);
 Serial.begin(9600);                       //START COMMUNICATING WITH XBEE
 
     Serial.print('A');  
-    digitalWrite(relaypin, LOW);
-    delay(1000);
 
+    digitalWrite(relaypin, LOW);  //blink twice
+    delay(1000);
     digitalWrite(relaypin, HIGH);
     delay(1000);
-
     digitalWrite(relaypin, LOW);
     delay(1000);
-
     digitalWrite(relaypin, HIGH);
     delay(1000);
-
     digitalWrite(relaypin, LOW);
     delay(1000);  
   
-    bedtime = 0;
+    bedtime = 0;  //set bedtime to 0
   
 }
 
